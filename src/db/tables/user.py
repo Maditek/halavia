@@ -1,5 +1,5 @@
 import datetime
-from sqlmodel import Field, SQLModel, table
+from sqlmodel import Field, SQLModel
 
 
 class UserBase(SQLModel):
@@ -8,4 +8,4 @@ class UserBase(SQLModel):
 
 class User(UserBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
-    created_at: datetime = Field(default_factory=datetime.datetime.now)
+    created_at: datetime.datetime = Field(default_factory=datetime.datetime.now)
