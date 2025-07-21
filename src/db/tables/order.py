@@ -1,7 +1,7 @@
 import datetime
 from sqlmodel import Field, SQLModel
 
-from src.repository.enums import OrderStatus
+from src.db.enums import OrderStatus
 
 
 class OrderBase(SQLModel):
