@@ -5,7 +5,6 @@ from src.db.enums import OrderStatus
 
 
 class OrderBase(SQLModel):
-    customer_name: str
     user_id: int = Field(foreign_key="user.id")
 
 
