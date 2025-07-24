@@ -1,6 +1,10 @@
-from sqlmodel import Field, SQLModel
+from typing import TYPE_CHECKING
+from sqlmodel import Field, Relationship, SQLModel
 
 from src.db.enums import BreadType, CutStyle
+
+if TYPE_CHECKING:
+    from src.db.tables.order import Order
 
 
 class ToastBase(SQLModel):
@@ -11,3 +15,5 @@ class ToastBase(SQLModel):
 
 class Toast(ToastBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
+
+    order: Order = Relationship(back_populates="toasts")
