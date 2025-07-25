@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from typing import TYPE_CHECKING
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -14,7 +14,7 @@ class OrderBase(SQLModel):
 
 class Order(OrderBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
-    created_at: datetime.datetime = Field(default_factory=datetime.datetime.now)
+    created_at: datetime = Field(default_factory=datetime.now)
     status: OrderStatus = Field(default=OrderStatus.PENDING)
 
     toasts: list["Toast"] = Relationship(back_populates="order", cascade_delete=True)
