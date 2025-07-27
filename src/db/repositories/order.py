@@ -13,14 +13,14 @@ class OrderRepository:
 
     def create(self, order: Order) -> Order:
         self.session.add(order)
-        self.session.commit(order)
+        self.session.commit()
         self.session.refresh(order)
         return order
 
     def update_status(self, order: Order, status: OrderStatus) -> Order:
         order.status = status
         self.session.add(order)
-        self.session.commit(order)
+        self.session.commit()
         self.session.refresh(order)
         return order
 

@@ -12,7 +12,7 @@ class OrderService:
         self.repo = OrderRepository(session=session)
 
     def create_order(self, order_create: OrderCreate) -> Order:
-        order = Order.model_dump(order_create)
+        order = Order.model_validate(order_create)
         return self.repo.create(order=order)
 
     def get_by_id(self, id: int) -> Order:
